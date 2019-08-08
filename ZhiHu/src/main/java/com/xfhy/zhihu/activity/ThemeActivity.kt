@@ -64,8 +64,7 @@ class ThemeActivity : BaseMvpActivity<ZHThemeDetailsPresenter>(),
     }
 
     override fun initPresenter() {
-        mPresenter = ZHThemeDetailsPresenter()
-        mPresenter?.mView = this
+        mPresenter = ZHThemeDetailsPresenter(this)
     }
 
     private fun initView() {

@@ -55,8 +55,7 @@ class ZHThemeFragment : BaseStateMVPFragment<ZHThemePresenter>(),
     }
 
     override fun initPresenter() {
-        mPresenter = ZHThemePresenter()
-        mPresenter?.mView = this
+        mPresenter = ZHThemePresenter(this)
     }
 
     private fun initView() {

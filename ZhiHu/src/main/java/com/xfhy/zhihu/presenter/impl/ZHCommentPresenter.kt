@@ -28,9 +28,7 @@ import io.reactivex.schedulers.Schedulers
  * time create at 2018年3月10日16:46:03
  * description 知乎评论页Presenter
  */
-class ZHCommentPresenter(private val mContext: Context) : RxPresenter(), ZHCommentContract.Presenter {
-
-    var mView: ZHCommentContract.View? = null
+class ZHCommentPresenter(private val mContext: Context,var mView: ZHCommentContract.View? ) : RxPresenter(), ZHCommentContract.Presenter {
 
     override fun reqLongComFromNet(id: String) {
         mView?.showLoading()

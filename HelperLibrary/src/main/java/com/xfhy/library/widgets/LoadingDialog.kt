@@ -10,7 +10,7 @@ import org.jetbrains.anko.find
 
 /**
  * Created by xfhy on 2018/2/4 16:09
- * Description : 加载对话框
+ * Description : 加载对话框  LoadingDialog
  */
 class LoadingDialog private constructor(context: Context, theme: Int) : Dialog(context, theme) {
 

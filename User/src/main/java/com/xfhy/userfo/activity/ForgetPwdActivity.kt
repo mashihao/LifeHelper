@@ -8,6 +8,7 @@ import cn.bmob.v3.listener.QueryListener
 import com.orhanobut.logger.Logger
 import com.xfhy.library.basekit.activity.TitleBarActivity
 import com.xfhy.library.ext.enable
+import com.xfhy.library.ext.loge
 import com.xfhy.library.ext.snackbar
 import com.xfhy.library.utils.SoftKeyboardUtil
 import com.xfhy.library.utils.StringUtils
@@ -15,6 +16,7 @@ import com.xfhy.userfo.R
 import com.xfhy.provider.bean.UserInfo
 import kotlinx.android.synthetic.main.user_activity_forget_pwd.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 
 /**
@@ -39,8 +41,14 @@ class ForgetPwdActivity : TitleBarActivity(), View.OnClickListener {
 
     private fun initView() {
 
-        mForgetPwdOkBtn.enable(mUserPhoneEt, { isForgetPwdBtnEnable() })
-        mForgetPwdOkBtn.enable(mVerifyCodeEt, { isForgetPwdBtnEnable() })
+        mForgetPwdOkBtn.enable(mUserPhoneEt)
+        {
+            isForgetPwdBtnEnable()
+        }
+        mForgetPwdOkBtn.enable(mVerifyCodeEt)
+        {
+            isForgetPwdBtnEnable()
+        }
 
         mVerifyCodeBtn.setOnClickListener(this)
         mForgetPwdOkBtn.setOnClickListener(this)
@@ -61,9 +69,12 @@ class ForgetPwdActivity : TitleBarActivity(), View.OnClickListener {
             }
             R.id.mVerifyCodeBtn -> {
                 getVerifyCode()
+                isSendVerifyCode = false;
             }
         }
     }
+
+    var isSendVerifyCode :Boolean= false;
 
     /**
      * 获取验证码
@@ -80,6 +91,7 @@ class ForgetPwdActivity : TitleBarActivity(), View.OnClickListener {
             override fun done(smsId: Int?, ex: BmobException?) {
                 if (ex == null) {//验证码发送成功
                     snackbar(mVerifyCodeBtn, "验证码发送成功")
+                    isSendVerifyCode = true
                 } else {
                     Logger.e("${ex.message}")
                     snackbar(mVerifyCodeBtn, "验证码发送失败")
@@ -89,6 +101,14 @@ class ForgetPwdActivity : TitleBarActivity(), View.OnClickListener {
     }
 
     private fun requestUpdatePwd() {
+
+
+        if (isSendVerifyCode.not())
+        {
+            toast("请先获取验证码")
+            return
+        }
+
         val user = UserInfo()
         user.username = mUserPhoneEt.text.toString()
         user.mobilePhoneNumber = mUserPhoneEt.text.toString()

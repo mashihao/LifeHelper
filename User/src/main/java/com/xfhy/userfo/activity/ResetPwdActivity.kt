@@ -29,7 +29,7 @@ class ResetPwdActivity : TitleBarActivity(), View.OnClickListener {
 
     private var mVerifyCode: String? = null
     val mGoLoginDialog by lazy {
-        CustomDialog(mContext, content = "重置密码成功!", rightBtnText =
+        CustomDialog(context =mContext, content = "重置密码成功!", rightBtnText =
         "去登录", listener = object : CustomDialog.OnCustomDialogListener {
             override fun onLeftClick() {
             }
@@ -49,6 +49,10 @@ class ResetPwdActivity : TitleBarActivity(), View.OnClickListener {
     }
 
     private fun initIntentData() {
+       mVerifyCode = intent?.run {
+             getStringExtra("verify_code")
+        }
+        toast(mVerifyCode+"")
         if (intent != null) {
             mVerifyCode = intent.getStringExtra("verify_code")
         }

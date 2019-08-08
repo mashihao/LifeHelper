@@ -72,8 +72,7 @@ class ZHLatestDailyFragment : BaseStateMVPFragment<ZHDailyLatestPresenter>(),
     }
 
     override fun initPresenter() {
-        mPresenter = ZHDailyLatestPresenter()
-        mPresenter?.mView = this
+        mPresenter = ZHDailyLatestPresenter(this)
     }
 
     private fun initViewEvent() {

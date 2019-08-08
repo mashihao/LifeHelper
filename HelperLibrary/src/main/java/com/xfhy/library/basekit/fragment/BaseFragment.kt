@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.trello.rxlifecycle2.components.support.RxFragment
 import com.xfhy.library.common.BroadcastConstant
+import org.jetbrains.anko.support.v4.toast
 
 
 /**
@@ -45,6 +46,8 @@ abstract class BaseFragment : RxFragment() {
 
         isInit = true  //视图已加载
         isCanLoadData() //初始化的时候去加载数据
+
+        toast(this.javaClass.simpleName)
     }
 
     /**

@@ -74,9 +74,9 @@ class SplashActivity : AppCompatActivity(), Animator.AnimatorListener {
         //倒计时
         disposable = Flowable.interval(1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
+                .subscribe {
                     mJumpOverTv.text = "跳过${jumpCount--}"
-                })
+                }
 
         //添加文字动画监听器
         alpha.addListener(this)

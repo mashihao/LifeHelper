@@ -2,6 +2,8 @@ package com.xfhy.library.basekit.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import com.xfhy.library.common.AppManager
 
@@ -16,7 +18,11 @@ abstract class BaseActivity : RxAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        Toast.makeText(this,this.javaClass.simpleName,Toast.LENGTH_SHORT).show()
+
         AppManager.instance.addActivity(this)
+
     }
 
     override fun onDestroy() {

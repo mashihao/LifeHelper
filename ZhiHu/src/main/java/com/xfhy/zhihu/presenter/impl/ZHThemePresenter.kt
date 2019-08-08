@@ -15,9 +15,7 @@ import io.reactivex.schedulers.Schedulers
  * create at 2018年3月10日16:46:35
  * description：知乎主题presenter
  */
-class ZHThemePresenter : RxPresenter(), ZHThemeContract.Presenter {
-
-    var mView: ZHThemeContract.View? = null
+class ZHThemePresenter( var mView: ZHThemeContract.View? ) : RxPresenter(), ZHThemeContract.Presenter {
 
     private var mStep: Int = 0
 

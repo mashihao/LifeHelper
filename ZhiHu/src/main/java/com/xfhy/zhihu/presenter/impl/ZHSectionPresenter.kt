@@ -16,9 +16,8 @@ import io.reactivex.schedulers.Schedulers
  * time create at 2018年3月10日16:46:26
  * description
  */
-class ZHSectionPresenter : RxPresenter(), ZHSectionContract.Presenter {
+class ZHSectionPresenter(var mView: ZHSectionContract.View? ): RxPresenter(), ZHSectionContract.Presenter {
 
-    var mView: ZHSectionContract.View? = null
 
     /**
      * 当前view所处的状态

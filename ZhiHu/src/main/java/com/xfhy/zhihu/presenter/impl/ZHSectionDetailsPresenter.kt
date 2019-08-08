@@ -15,9 +15,8 @@ import io.reactivex.schedulers.Schedulers
  * create at 2018年3月10日16:46:22
  * description：知乎专栏详情列表presenter
  */
-class ZHSectionDetailsPresenter : RxPresenter(), ZHSectionDetailsContract.Presenter {
+class ZHSectionDetailsPresenter(var mView: ZHSectionDetailsContract.View?) : RxPresenter(), ZHSectionDetailsContract.Presenter {
 
-    var mView: ZHSectionDetailsContract.View? = null
 
     private var mData: List<ColumnDailyDetailsBean.StoriesBean>? = null
     /**

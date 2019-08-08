@@ -50,8 +50,7 @@ class ZHHotFragment : BaseStateMVPFragment<ZHHotPresenter>(),
     }
 
     override fun initPresenter() {
-        mPresenter = ZHHotPresenter()
-        mPresenter?.mView = this
+        mPresenter = ZHHotPresenter(this)
     }
 
     private fun initView() {

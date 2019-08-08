@@ -15,9 +15,7 @@ import io.reactivex.schedulers.Schedulers
  * create at 2018年3月10日16:46:17
  * description：知乎热门文章Presenter
  */
-class ZHHotPresenter : RxPresenter(), ZHHotContract.Presenter {
-
-    var mView: ZHHotContract.View? = null
+class ZHHotPresenter (var mView: ZHHotContract.View?): RxPresenter(), ZHHotContract.Presenter {
 
     private var mData: List<HotDailyBean.RecentBean>? = null
     private var mStep: Int = 0

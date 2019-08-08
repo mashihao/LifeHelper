@@ -72,8 +72,7 @@ class ZHDailyDetailsActivity : BaseMvpActivity<ZHDailyDetailsPresenter>(),
     }
 
     override fun initPresenter() {
-        mPresenter = ZHDailyDetailsPresenter()
-        mPresenter?.mView = this
+        mPresenter = ZHDailyDetailsPresenter(this)
     }
 
     @SuppressLint("SetJavaScriptEnabled")

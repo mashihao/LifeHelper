@@ -2,6 +2,7 @@ package com.xfhy.library.ext
 
 import android.app.Activity
 import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -29,5 +30,11 @@ fun Button.enable(et: EditText, method: () -> Boolean) {
 //Activity中展示snackbar
 fun Activity.snackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT, type: Int = SnackbarUtil.INFO) {
     SnackbarUtil.showCustomTimeSnackbar(view, message, Snackbar.LENGTH_SHORT, SnackbarUtil.INFO)
+}
+
+
+fun loge(msg:String){
+
+    Log.e("MSH",msg)
 }
 

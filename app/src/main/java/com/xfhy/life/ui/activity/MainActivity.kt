@@ -21,6 +21,7 @@ import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import cn.bmob.v3.BmobUser
 import com.orhanobut.logger.Logger
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.xfhy.gank.fragment.GankMainFragment
@@ -232,6 +233,12 @@ class MainActivity : BaseMvpActivity<MainActivityContract.Presenter>(),
                 addFragment(supportFragmentManager, mAboutFragment, "AboutFragment")
                 showFragment(supportFragmentManager, mAboutFragment)
                 setToolBarTitle("关于")
+            }
+            R.id.nav_menu_logout->{
+                BmobUser.logOut()
+                addFragment(supportFragmentManager, mDailyMainFragment, "ZHLatestDailyFragment")
+                showFragment(supportFragmentManager, mDailyMainFragment)
+                setToolBarTitle("知乎")
             }
         }
         mMainDrawer.closeDrawer(GravityCompat.START)

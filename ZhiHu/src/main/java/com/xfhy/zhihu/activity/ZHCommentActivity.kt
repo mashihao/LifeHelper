@@ -76,8 +76,7 @@ class ZHCommentActivity : BaseMvpActivity<ZHCommentPresenter>(),
     }
 
     override fun initPresenter() {
-        mPresenter = ZHCommentPresenter(this)
-        mPresenter?.mView = this
+        mPresenter = ZHCommentPresenter(this,this)
     }
 
     private fun initView() {

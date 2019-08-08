@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.orhanobut.logger.Logger
 import com.xfhy.library.basekit.activity.TitleBarActivity
 import com.xfhy.library.ext.enable
+import com.xfhy.library.ext.loge
 import com.xfhy.library.ext.snackbar
 import com.xfhy.library.utils.MD5Util
 import com.xfhy.library.utils.SoftKeyboardUtil
@@ -19,6 +20,7 @@ import com.xfhy.provider.arouter.ARouterPath
 import com.xfhy.userfo.R
 import com.xfhy.provider.bean.UserInfo
 import kotlinx.android.synthetic.main.user_activity_login.*
+import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.startActivity
 
 
@@ -43,8 +45,8 @@ class LoginActivity : TitleBarActivity(), View.OnClickListener, View.OnFocusChan
     }
 
     private fun initView() {
-        mLoginBtn.enable(mUserPhoneEt, { isLoginBtnEnable() })
-        mLoginBtn.enable(mPwdEt, { isLoginBtnEnable() })
+        mLoginBtn.enable(mUserPhoneEt) { isLoginBtnEnable() }
+        mLoginBtn.enable(mPwdEt) { isLoginBtnEnable() }
 
         mLoginBtn.setOnClickListener(this)
         mNoAccountTv.setOnClickListener(this)
@@ -76,15 +78,19 @@ class LoginActivity : TitleBarActivity(), View.OnClickListener, View.OnFocusChan
     }
 
     override fun onFocusChange(v: View, hasFocus: Boolean) {
+        //当获取焦点
         if (hasFocus) {
-            when (v.id) {
-                R.id.mUserPhoneEt -> {
-                    mCurrentStateIv.setImageResource(R.drawable.login_state_input)
+            when (v.id)
+            {
+                R.id.mUserPhoneEt->{
+                    mCurrentStateIv.imageResource =R.drawable.login_state_input
                 }
-                R.id.mPwdEt -> {
-                    mCurrentStateIv.setImageResource(R.drawable.login_state_password)
+
+                R.id.mPwdEt->{
+                    mCurrentStateIv.imageResource = R.drawable.login_state_password
                 }
             }
+
         }
     }
 
@@ -122,7 +128,7 @@ class LoginActivity : TitleBarActivity(), View.OnClickListener, View.OnFocusChan
                     mContext.startActivity(intent)
                     finish()
                 } else {
-                    snackbar(mUserPhoneEt, "登录失败 请稍后重试")
+                    snackbar(mUserPhoneEt, "登录失败 请稍后重试 --- > ${e.message}")
                     Logger.e("登录失败 ${e.message}")
                 }
             }

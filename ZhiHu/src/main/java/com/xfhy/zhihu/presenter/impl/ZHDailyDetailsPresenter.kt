@@ -23,9 +23,8 @@ import io.reactivex.schedulers.Schedulers
  * @time create at 2018年3月10日16:46:06
  * @description 知乎最新日报详情
  */
-class ZHDailyDetailsPresenter : RxPresenter(), ZHDailyDetailsContract.Presenter {
+class ZHDailyDetailsPresenter(var mView: ZHDailyDetailsContract.View?) : RxPresenter(), ZHDailyDetailsContract.Presenter {
 
-    var mView: ZHDailyDetailsContract.View? = null
 
     /**
      * 日报数据

@@ -15,7 +15,7 @@ import java.util.ArrayList
 /**
  * author feiyang
  * create at 2018年3月10日16:45:49
- * description：知乎板块的主fragment
+ * description：知乎板块的主fragment  承载 知乎 四个Tab
  */
 class ZHMainFragment : BaseFragment() {
 
@@ -34,7 +34,7 @@ class ZHMainFragment : BaseFragment() {
     }
 
     /**
-     * 获取tab数据
+     * 获取tab数据  直接可以拿到 对应的值
      */
     private val tabData: List<Fragment>
         get() {

@@ -91,8 +91,7 @@ class ZHSectionDetailsActivity : BaseMvpActivity<ZHSectionDetailsPresenter>(), Z
     }
 
     override fun initPresenter() {
-        mPresenter = ZHSectionDetailsPresenter()
-        mPresenter?.mView = this
+        mPresenter = ZHSectionDetailsPresenter(this)
     }
 
     private fun initData() {
